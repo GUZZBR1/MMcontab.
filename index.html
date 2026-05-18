@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MM Contab oferece contabilidade consultiva, planejamento fiscal, BPO financeiro e suporte empresarial estratégico.">
+  <title>MM Contab | Contabilidade Moderna e Inteligente</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #990000;
+      --primary-dark: #7a0000;
+      --secondary: #1a1a1a;
+      --text: #4a4a4a;
+      --muted: #777777;
+      --bg-light: #fdfdfd;
+      --bg-gray: #f7f9fa;
+      --white: #ffffff;
+      --border: rgba(26, 26, 26, 0.08);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --transition: 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+      overflow-x: hidden;
+      color: var(--text);
+      background: var(--bg-light);
+      font-family: "Inter", sans-serif;
+      line-height: 1.7;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: var(--secondary);
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition), background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      width: min(100% - 48px, 1200px);
+      margin: 0 auto;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 13px 24px;
+      border: 0;
+      border-radius: 6px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      color: var(--white);
+      background: var(--primary);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--primary-dark);
+      box-shadow: 0 8px 18px rgba(153, 0, 0, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      color: var(--primary);
+      background: transparent;
+      border: 2px solid var(--primary);
+    }
+
+    .btn-outline:hover,
+    .btn-outline:focus-visible {
+      color: var(--white);
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 96px 0;
+      scroll-margin-top: 96px;
+    }
+
+    .section-title {
+      max-width: 680px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+
+    .section-title h2 {
+      position: relative;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      font-size: clamp(1.8rem, 3vw, 2.3rem);
+    }
+
+    .section-title h2::after {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 52px;
+      height: 3px;
+      background: var(--primary);
+      content: "";
+      transform: translateX(-50%);
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .site-header {
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.02);
+      backdrop-filter: blur(10px);
+      transition: box-shadow var(--transition);
+    }
+
+    .site-header.is-scrolled {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 88px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      color: var(--secondary);
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .logo-accent {
+      color: var(--primary);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      position: relative;
+      color: var(--secondary);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .nav-link::after {
+      position: absolute;
+      bottom: -7px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      content: "";
+      transition: width var(--transition);
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible,
+    .nav-link.active {
+      color: var(--primary);
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      margin: 5px auto;
+      border-radius: 2px;
+      background: var(--secondary);
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hero {
+      position: relative;
+      padding: 132px 0 80px;
+      background: linear-gradient(135deg, #ffffff 0%, #f3f5f7 100%);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 24px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      color: var(--primary);
+      background: rgba(153, 0, 0, 0.07);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      margin-bottom: 24px;
+      font-size: clamp(2.25rem, 5vw, 3.6rem);
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      max-width: 660px;
+      margin-bottom: 36px;
+      color: #555555;
+      font-size: 1.15rem;
+      font-weight: 300;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 460px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 24px 55px rgba(26, 26, 26, 0.14);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 460px;
+      object-fit: cover;
+    }
+
+    .hero-visual::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(26, 26, 26, 0.05), rgba(26, 26, 26, 0.28));
+      content: "";
+    }
+
+    .about {
+      background: var(--white);
+    }
+
+    .about-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 0.9fr);
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      margin-bottom: 20px;
+      font-size: clamp(1.55rem, 3vw, 1.9rem);
+    }
+
+    .about-text p + p {
+      margin-top: 18px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .stat-box {
+      min-height: 150px;
+      padding: 28px;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      background: var(--bg-gray);
+    }
+
+    .stat-box h4 {
+      margin-bottom: 6px;
+      color: var(--primary);
+      font-size: 2.35rem;
+    }
+
+    .stat-box p {
+      color: var(--secondary);
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .services,
+    .contact {
+      background: var(--bg-gray);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 28px;
+    }
+
+    .service-card {
+      padding: 36px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    .service-card:hover,
+    .service-card:focus-within {
+      border-color: rgba(153, 0, 0, 0.18);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
+      transform: translateY(-5px);
+    }
+
+    .service-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      margin-bottom: 24px;
+      border-radius: 6px;
+      color: var(--primary);
+      background: rgba(153, 0, 0, 0.06);
+      font-size: 1.45rem;
+      transition: color var(--transition), background var(--transition);
+    }
+
+    .service-card:hover .service-icon {
+      color: var(--white);
+      background: var(--primary);
+    }
+
+    .service-card h3 {
+      margin-bottom: 14px;
+      font-size: 1.22rem;
+    }
+
+    .service-card p,
+    .feature-item p,
+    .contact-item p {
+      font-size: 0.96rem;
+    }
+
+    .features {
+      background: var(--white);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
+    }
+
+    .feature-item {
+      padding: 18px;
+      text-align: center;
+    }
+
+    .feature-item i {
+      margin-bottom: 20px;
+      color: var(--primary);
+      font-size: 2.4rem;
+    }
+
+    .feature-item h3 {
+      margin-bottom: 12px;
+      font-size: 1.18rem;
+    }
+
+    .cta {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--secondary), #2a2a2a);
+      text-align: center;
+    }
+
+    .cta::before {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, rgba(153, 0, 0, 0.22), transparent 58%);
+      content: "";
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .cta h2 {
+      margin-bottom: 20px;
+      color: var(--white);
+      font-size: clamp(1.9rem, 4vw, 2.5rem);
+    }
+
+    .cta p {
+      margin-bottom: 32px;
+      color: #d0d0d0;
+      font-size: 1.08rem;
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1fr);
+      gap: 56px;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      margin-bottom: 22px;
+      font-size: 1.75rem;
+    }
+
+    .contact-lead {
+      margin-bottom: 30px;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .contact-item i {
+      display: flex;
+      flex: 0 0 45px;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      color: var(--primary);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      font-size: 1rem;
+    }
+
+    .contact-item h4 {
+      margin-bottom: 2px;
+      font-size: 1rem;
+    }
+
+    .contact-form {
+      padding: 36px;
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-control {
+      width: 100%;
+      min-height: 50px;
+      padding: 13px 14px;
+      border: 1px solid #e1e1e1;
+      border-radius: 6px;
+      color: var(--secondary);
+      background: var(--bg-light);
+      font: inherit;
+      transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      outline: 0;
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(153, 0, 0, 0.08);
+    }
+
+    textarea.form-control {
+      min-height: 128px;
+      resize: vertical;
+    }
+
+    .form-status {
+      min-height: 24px;
+      margin-top: 14px;
+      color: var(--primary);
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .site-footer {
+      padding: 76px 0 30px;
+      color: #a0a0a0;
+      background: var(--secondary);
+      font-size: 0.92rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(150px, 1fr) minmax(150px, 1fr);
+      gap: 56px;
+      margin-bottom: 56px;
+    }
+
+    .footer-brand h3,
+    .footer-links h4 {
+      color: var(--white);
+    }
+
+    .footer-brand h3 {
+      margin-bottom: 18px;
+    }
+
+    .footer-brand p {
+      max-width: 360px;
+      margin-bottom: 24px;
+    }
+
+    .footer-links h4 {
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+    }
+
+    .footer-links ul {
+      display: grid;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--white);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 14px;
+    }
+
+    .footer-socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-socials a:hover,
+    .footer-socials a:focus-visible {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      z-index: 999;
+      right: 28px;
+      bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      color: var(--white);
+      background: #25d366;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+      font-size: 1.9rem;
+    }
+
+    .whatsapp-float:hover,
+    .whatsapp-float:focus-visible {
+      background: #20ba5a;
+      transform: scale(1.06);
+    }
+
+    @media (max-width: 992px) {
+      section {
+        padding: 72px 0;
+      }
+
+      .container {
+        width: min(100% - 36px, 1200px);
+      }
+
+      .nav-container {
+        min-height: 78px;
+      }
+
+      .menu-toggle {
+        position: relative;
+        z-index: 1002;
+        display: block;
+      }
+
+      .nav-menu {
+        position: fixed;
+        z-index: 1001;
+        top: 0;
+        right: -100%;
+        width: min(82vw, 390px);
+        height: 100vh;
+        padding: 100px 28px 40px;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 28px;
+        background: var(--white);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.08);
+        transition: right 0.35s ease;
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .nav-btn {
+        width: 100%;
+      }
+
+      .hero {
+        padding: 112px 0 64px;
+      }
+
+      .hero-layout,
+      .about-wrapper,
+      .contact-wrapper,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 340px;
+      }
+
+      .hero-visual img {
+        min-height: 340px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-buttons,
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        display: grid;
+      }
+
+      .btn {
+        width: 100%;
+        white-space: normal;
+      }
+
+      .stat-box,
+      .service-card,
+      .contact-form {
+        padding: 26px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .whatsapp-float {
+        right: 18px;
+        bottom: 18px;
+        width: 54px;
+        height: 54px;
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="container nav-container">
+      <a class="logo" href="#home" aria-label="MM Contab - página inicial">
+        MM<span class="logo-accent">CONTAB</span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Navegação principal">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#sobre" class="nav-link">Sobre</a>
+        <a href="#servicos" class="nav-link">Serviços</a>
+        <a href="#diferenciais" class="nav-link">Diferenciais</a>
+        <a href="#contato" class="nav-link">Contato</a>
+        <a href="https://wa.me/5512999999999" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-btn">Fale Conosco</a>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-controls="navMenu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-layout">
+        <div class="hero-content">
+          <span class="hero-tag">Inteligência Contábil</span>
+          <h1>Contabilidade moderna construindo <span>negócios sólidos.</span></h1>
+          <p>Mais do que processar dados, entregamos direção estratégica. Proteja seu patrimônio e acelere o crescimento da sua empresa com quem entende o seu mercado.</p>
+          <div class="hero-buttons">
+            <a href="https://wa.me/5512999999999" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              Fale Conosco no WhatsApp
+            </a>
+            <a href="#servicos" class="btn btn-outline">Conhecer Serviços</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=960&q=80" alt="">
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="about">
+      <div class="container about-wrapper">
+        <div class="about-text">
+          <h3>Compromisso com a sua estabilidade e sucesso financeiro</h3>
+          <p>Unimos a precisão técnica da contabilidade tradicional à agilidade das ferramentas digitais modernas. Nossa missão é desmistificar a burocracia para que você foque exclusivamente no que faz de melhor: gerir e expandir seu negócio.</p>
+          <p>Com atendimento personalizado e transparente, atuamos lado a lado com pequenas, médias e grandes empresas, oferecendo conformidade e segurança jurídica total.</p>
+        </div>
+
+        <div class="about-stats" aria-label="Indicadores da MM Contab">
+          <div class="stat-box">
+            <h4>+10</h4>
+            <p>Anos de Experiência</p>
+          </div>
+          <div class="stat-box">
+            <h4>99%</h4>
+            <p>Retenção de Clientes</p>
+          </div>
+          <div class="stat-box">
+            <h4>+500</h4>
+            <p>Empresas Atendidas</p>
+          </div>
+          <div class="stat-box">
+            <h4>100%</h4>
+            <p>Segurança Digital</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Nossas Soluções</h2>
+          <p>Gestão completa e especializada para apoiar todas as fases e departamentos da sua empresa.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon"><i class="fas fa-calculator" aria-hidden="true"></i></div>
+            <h3>Contabilidade Consultiva</h3>
+            <p>Balanços, demonstrativos e relatórios inteligentes que vão além das obrigações fiscais, auxiliando na tomada de decisões.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><i class="fas fa-percent" aria-hidden="true"></i></div>
+            <h3>Planejamento Fiscal</h3>
+            <p>Análise aprofundada para enquadrar sua empresa na menor carga tributária possível de forma estritamente legal.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+            <h3>Departamento Pessoal / RH</h3>
+            <p>Gestão total da folha de pagamento, admissões, demissões, férias e conformidade com as regras trabalhistas e eSocial.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><i class="fas fa-building" aria-hidden="true"></i></div>
+            <h3>Abertura e Legalização</h3>
+            <p>Abra sua empresa com rapidez, sem dores de cabeça burocráticas e com o suporte societário correto desde o primeiro dia.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+            <h3>BPO Financeiro</h3>
+            <p>Terceirize contas a pagar, contas a receber e fluxo de caixa para ganhar eficiência operacional com relatórios diários.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+            <h3>Blindagem Patrimonial</h3>
+            <p>Estratégias jurídicas e contábeis avançadas para proteção de bens e otimização de holdings familiares ou empresariais.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="diferenciais" class="features">
+      <div class="container">
+        <div class="section-title">
+          <h2>Por que a MM Contabilidade?</h2>
+          <p>Combinamos alto rigor técnico com uma cultura focada na parceria de longo prazo.</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-item">
+            <i class="fas fa-user-tie" aria-hidden="true"></i>
+            <h3>Atendimento Humano</h3>
+            <p>Sem filas ou robôs. Você fala diretamente com o contador responsável pela sua conta de maneira ágil.</p>
+          </article>
+          <article class="feature-item">
+            <i class="fas fa-bolt" aria-hidden="true"></i>
+            <h3>Agilidade Digital</h3>
+            <p>Processos integrados em nuvem. Envie e receba documentos diretamente pela nossa plataforma.</p>
+          </article>
+          <article class="feature-item">
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+            <h3>Proatividade Real</h3>
+            <p>Monitoramos seu negócio para antecipar riscos e propor melhorias fiscais de forma contínua.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-content">
+          <h2 id="cta-title">Pronto para reduzir custos e focar no crescimento?</h2>
+          <p>Agende um diagnóstico financeiro e tributário gratuito com um dos nossos especialistas.</p>
+          <a href="https://wa.me/5512999999999" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Começar Agora
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contact">
+      <div class="container contact-wrapper">
+        <div class="contact-info">
+          <h3>Canais de Atendimento</h3>
+          <p class="contact-lead">Escolha a forma mais conveniente para falar conosco. Estamos prontos para atender sua demanda imediata.</p>
+
+          <div class="contact-grid">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              <div>
+                <h4>Endereço corporativo</h4>
+                <p>Av. Paulista, 1000 - Sala 415, São Paulo - SP, 01310-100</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone-alt" aria-hidden="true"></i>
+              <div>
+                <h4>Telefone</h4>
+                <p>(12) 3456-7890</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <div>
+                <h4>E-mail comercial</h4>
+                <p>contato@suaempresa.com.br</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label class="sr-only" for="name">Nome completo</label>
+              <input id="name" name="name" type="text" class="form-control" placeholder="Seu nome completo" autocomplete="name" required>
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="email">E-mail</label>
+              <input id="email" name="email" type="email" class="form-control" placeholder="Seu melhor e-mail" autocomplete="email" required>
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="phone">Telefone ou WhatsApp</label>
+              <input id="phone" name="phone" type="tel" class="form-control" placeholder="Telefone / WhatsApp" autocomplete="tel" required>
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="message">Mensagem</label>
+              <textarea id="message" name="message" class="form-control" placeholder="Como podemos ajudar o seu negócio?" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>MMCONTAB</h3>
+          <p>Contabilidade consultiva e estratégica voltada para o crescimento seguro e redução da carga tributária de negócios modernos.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Instagram da MM Contab"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="LinkedIn da MM Contab"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Facebook da MM Contab"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#sobre">Sobre nós</a></li>
+            <li><a href="#servicos">Nossos Serviços</a></li>
+            <li><a href="#contato">Fale Conosco</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">LGPD Compliance</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 MM Contabilidade. Todos os direitos reservados.</p>
+        <p>Desenvolvido com foco em alta performance.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5512999999999" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+  </a>
+
+  <script>
+    const header = document.getElementById("header");
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+    const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+    const contactForm = document.getElementById("contactForm");
+    const formStatus = document.getElementById("formStatus");
+
+    const closeMenu = () => {
+      navMenu.classList.remove("active");
+      menuToggle.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("menu-open");
+    };
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navMenu.classList.toggle("active");
+
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      document.body.classList.toggle("menu-open", isOpen);
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 50);
+
+      const activePosition = window.scrollY + 130;
+
+      navLinks.forEach((link) => {
+        const section = document.querySelector(link.hash);
+
+        if (!section) {
+          return;
+        }
+
+        const isActive = section.offsetTop <= activePosition && section.offsetTop + section.offsetHeight > activePosition;
+        link.classList.toggle("active", isActive);
+      });
+    });
+
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      formStatus.textContent = "Mensagem registrada. Entraremos em contato em breve.";
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
